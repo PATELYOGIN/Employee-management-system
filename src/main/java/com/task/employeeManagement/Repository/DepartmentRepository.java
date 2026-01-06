@@ -7,5 +7,7 @@ import com.task.employeeManagement.model.DepartmentModel;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<DepartmentModel, Long> {
+	
+	
 
 }

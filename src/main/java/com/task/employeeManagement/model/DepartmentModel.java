@@ -64,14 +64,31 @@ public class DepartmentModel {
 	}
     
     //getter and setter 
+    
+    public List<EmployeeModel> getEmployees() {
+        return employees;
+    }
 
-	public Long getDept_id() {
-		return dept_id;
-	}
+    public void setEmployees(List<EmployeeModel> employees) {
+        this.employees = employees;
+    }
+    
 
-	public void setDept_id(Long dept_id) {
-		this.dept_id = dept_id;
-	}
+    public Long getDeptId() {
+        return dept_id;
+    }
+
+    public void setDeptId(Long deptId) {
+        this.dept_id = deptId;
+    }
+
+//	public Long getDept_id() {
+//		return dept_id;
+//	}
+//
+//	public void setDept_id(Long dept_id) {
+//		this.dept_id = dept_id;
+//	}
 
 	public String getDept_name() {
 		return dept_name;

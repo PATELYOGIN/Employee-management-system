@@ -28,15 +28,43 @@ public class EmployeeService {
 	        this.departmentRepository = departmentRepository;
 	    }
 	
+//    public EmployeeModel saveEmployee(EmployeeModel employee) {
+//    	
+//    	 log.info("Service received Employee: {}", employee);
+//    	 EmployeeModel saved = employeeRepository.save(employee);
+//         log.info("Service saved Employee in DB: {}", saved);
+//        return employeeRepository.save(employee);
+//
+//    }
+
+ 
+	 public EmployeeModel updateEmployee(Long id, EmployeeModel employee) {
+	    
+	    EmployeeModel existing = employeeRepository.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Employee not found"));
+	    
+	    existing.setEmployee_code(employee.getEmployee_code());
+	    existing.setFirst_name(employee.getFirst_name());
+	    existing.setLast_name(employee.getLast_name());
+	    existing.setEmail(employee.getEmail());
+	    existing.setSalary(employee.getSalary());
+	    existing.setDate_of_joining(employee.getDate_of_joining());
+	    existing.setDepartment(employee.getDepartment());
+	    
+	    return employeeRepository.save(existing);
+	    
+	 }
+	 
+	 
+	 
+	 
     public EmployeeModel saveEmployee(EmployeeModel employee) {
-    	 log.info("Service received Employee: {}", employee);
-    	
-    	 EmployeeModel saved = employeeRepository.save(employee);
-         log.info("Service saved Employee in DB: {}", saved);
-        return employeeRepository.save(employee);
-
+        log.info("Service received Employee: {}", employee);
+        EmployeeModel saved = employeeRepository.save(employee);
+        log.info("Service saved Employee in DB: {}", saved);
+        return saved;
     }
-
+    
     
     // Get all employees
     public List<EmployeeModel> getAllEmployees() {
@@ -59,6 +87,7 @@ public class EmployeeService {
         return false;
     }
     
+
     
 //   // this checkes the dupicates data
 //    public boolean isEmailExists(String email) {

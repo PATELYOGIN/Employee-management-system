@@ -25,9 +25,10 @@ public class EmployeeModel {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long emp_id;
 	  
-	  @ManyToOne(fetch = FetchType.LAZY)
+	  //fetch = FetchType.LAZY
+	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name = "dept_id", nullable = false) // FK column
-	    private DepartmentModel  dept_id;
+	    private DepartmentModel  department;
 
 	    @Column(name = "employee_code", nullable = false, unique = true)
 	    private String employee_code;
@@ -41,8 +42,8 @@ public class EmployeeModel {
 	    @Column(name = "email" ,nullable = false, unique = true)
 	    private String email;
 
-	    @Column(name = "department")
-	    private String department;
+	    //@Column(name = "department")
+	  //  private String department;
 
 	    @Column(name = "salary" ,nullable = false)
 	    private BigDecimal salary;
@@ -64,12 +65,12 @@ public class EmployeeModel {
 	    	
 	    }
 	    
-		public EmployeeModel(Long emp_id, DepartmentModel dept_id, String employee_code, String first_name,
-				String last_name, String email, String department, BigDecimal salary, LocalDate date_of_joining,
+		public EmployeeModel(Long emp_id, String employee_code, String first_name,
+				String last_name, String email, BigDecimal salary, LocalDate date_of_joining,
 				LocalDateTime created_at, LocalDateTime updated_at) {
 			super();
 			this.emp_id = emp_id;
-			this.dept_id = dept_id;
+//			this.department = dept_id;
 			this.employee_code = employee_code;
 			this.first_name = first_name;
 			this.last_name = last_name;
@@ -82,14 +83,25 @@ public class EmployeeModel {
 		}
 
 
-		public DepartmentModel getDept_id() {
-			return dept_id;
+//		public DepartmentModel getDept_id() {
+//			return department;
+//		}
+//
+//		public void setDept_id(DepartmentModel dept_id) {
+//			this.department = dept_id;
+//		}
+
+		
+		public DepartmentModel getDepartment() {
+		    return department;
 		}
 
-		public void setDept_id(DepartmentModel dept_id) {
-			this.dept_id = dept_id;
+		public void setDepartment(DepartmentModel department) {
+		    this.department = department;
 		}
-
+		
+		
+		
 		public Long getEmp_id() {
 			return emp_id;
 		}

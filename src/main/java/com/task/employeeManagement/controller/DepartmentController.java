@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -87,7 +88,22 @@ public class DepartmentController {
 	        }
 		
 	 }
-}
+	 
+	 
+	 @DeleteMapping("/department/{id}")
+	 public ResponseEntity<String> deleteDepartment(@PathVariable("id") Long id) {
+	     String result = departmentservice.deleteDepartment(id);
+
+	     if (result.contains("Cannot delete") || result.contains("not found")) {
+	         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+	     }
+
+	     return new ResponseEntity<>(result, HttpStatus.OK);
+	 }
+		 
+	 }
+
+	 
 
 		
 		
