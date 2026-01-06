@@ -37,25 +37,6 @@ public class EmployeeService {
 //
 //    }
 
- 
-	 public EmployeeModel updateEmployee(Long id, EmployeeModel employee) {
-	    
-	    EmployeeModel existing = employeeRepository.findById(id)
-	            .orElseThrow(() -> new RuntimeException("Employee not found"));
-	    
-	    existing.setEmployee_code(employee.getEmployee_code());
-	    existing.setFirst_name(employee.getFirst_name());
-	    existing.setLast_name(employee.getLast_name());
-	    existing.setEmail(employee.getEmail());
-	    existing.setSalary(employee.getSalary());
-	    existing.setDate_of_joining(employee.getDate_of_joining());
-	    existing.setDepartment(employee.getDepartment());
-	    
-	    return employeeRepository.save(existing);
-	    
-	 }
-	 
-	 
 	 
 	 
     public EmployeeModel saveEmployee(EmployeeModel employee) {
@@ -86,6 +67,23 @@ public class EmployeeService {
         }
         return false;
     }
+    
+public EmployeeModel updateEmployee(Long id, EmployeeModel employee) {
+	    
+	    EmployeeModel existing = employeeRepository.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Employee not found"));
+	    
+	    existing.setEmployee_code(employee.getEmployee_code());
+	    existing.setFirst_name(employee.getFirst_name());
+	    existing.setLast_name(employee.getLast_name());
+	    existing.setEmail(employee.getEmail());
+	    existing.setSalary(employee.getSalary());
+	    existing.setDate_of_joining(employee.getDate_of_joining());
+	    existing.setDepartment(employee.getDepartment());
+	    
+	    return employeeRepository.save(existing);
+	    
+	 }
     
 
     
